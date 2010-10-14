@@ -1,0 +1,29 @@
+<places type="array">
+  <place>
+    <id>362345</id>
+    <full-name>Australia &amp; Pacific -&gt; Australia -&gt; Queensland -&gt; Brisbane</full-name>
+    <short-name>Brisbane</short-name>
+    <north-latitude>-27.434999</north-latitude>
+    <south-latitude>-27.511299</south-latitude>
+    <east-longitude>153.069</east-longitude>
+    <west-longitude>152.972</west-longitude>
+  </place>
+  <place>
+    <id>1004946</id>
+    <full-name>Australia &amp; Pacific -&gt; Australia -&gt; Queensland -&gt; Brisbane -&gt; Brisbane Forest Park</full-name>
+    <short-name>Brisbane Forest Park</short-name>
+    <north-latitude/>
+    <south-latitude/>
+    <east-longitude/>
+    <west-longitude/>
+  </place>
+  <place>
+    <id>1298006</id>
+    <full-name>Australia &amp; Pacific -&gt; Australia -&gt; New South Wales -&gt; Brisbane Water National Park</full-name>
+    <short-name>Brisbane Water National Park</short-name>
+    <north-latitude/>
+    <south-latitude/>
+    <east-longitude/>
+    <west-longitude/>
+  </place>
+</places>

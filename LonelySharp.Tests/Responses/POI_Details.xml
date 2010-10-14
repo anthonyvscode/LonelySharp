@@ -1,0 +1,39 @@
+<poi>
+  <name>Alhambra Lounge</name>
+  <alt-name/>
+  <digital-latitude>-27.4593060902703</digital-latitude>
+  <digital-longitude>153.0352431535720</digital-longitude>
+  <latitude>-27.4593060902703</latitude>
+  <longitude>153.0352431535720</longitude>
+  <emails type="array">
+  </emails>
+  <hours>9pm-5am Thu-Sun</hours>
+  <prac-string deprecated="This will be removed in September 2010."/>
+  <price-range/>
+  <price-string/>
+  <urls type="array">
+    <url>www.alhambralounge.com</url>
+  </urls>
+  <poi-type>Night</poi-type>
+  <address>
+    <street>12 McLachlan St</street>
+    <locality>Fortitude Valley</locality>
+    <postcode/>
+    <extras/>
+  </address>
+  <review>&lt;p&gt;This place caters to clubbers who have outgrown their glow sticks. Themed around a Spanish castle, the dark red interiors are filled with sofas and private booths. Tunes are typically break-beat, house and new-school funk.&lt;/p&gt; </review>
+  <telephones type="array">
+    <telephone>
+      <area-code/>
+      <number>07-3216 0226</number>
+      <text/>
+    </telephone>
+  </telephones>
+  <transports type="array">
+  </transports>
+  <representations type="array">
+    <representation type="lp.com" href="http://www.lonelyplanet.com/poiRedirector?poiId=368521"/>
+    <representation type="msite" href="http://m.lonelyplanet.com/et-1000325637"/>
+    <representation type="msite.touch" href="http://touch.lonelyplanet.com/et-1000325637"/>
+  </representations>
+</poi>

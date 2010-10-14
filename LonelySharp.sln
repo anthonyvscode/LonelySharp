@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LonelySharp", "LonelySharp\LonelySharp.csproj", "{43626D77-6EF3-412E-B5A8-FBCD9B8A2999}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LonelySharp.Tests", "LonelySharp.Tests\LonelySharp.Tests.csproj", "{C696E90C-4B83-4D62-8064-A9C60D062A12}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{79B55998-30E3-44AA-B30F-7543218BA54F}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		LonelySharp.vsmdi = LonelySharp.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = LonelySharp.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{43626D77-6EF3-412E-B5A8-FBCD9B8A2999}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43626D77-6EF3-412E-B5A8-FBCD9B8A2999}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43626D77-6EF3-412E-B5A8-FBCD9B8A2999}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43626D77-6EF3-412E-B5A8-FBCD9B8A2999}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C696E90C-4B83-4D62-8064-A9C60D062A12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C696E90C-4B83-4D62-8064-A9C60D062A12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C696E90C-4B83-4D62-8064-A9C60D062A12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C696E90C-4B83-4D62-8064-A9C60D062A12}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

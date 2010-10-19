@@ -9,7 +9,7 @@ namespace LonelySharp
 {
     public partial class LonelySharp
     {
-        public PlaceCollection FindPlace(string place)
+        public PlaceCollection GetPlace(string place)
         {
             var request = new RestRequest {Resource = "places"};
             request.AddParameter("name", place);

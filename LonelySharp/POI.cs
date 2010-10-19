@@ -9,7 +9,19 @@ namespace LonelySharp
 {
     public partial class LonelySharp
     {
-        public POICollection GetPOIListByID(double north, double south, double east, double west)
+        /// <summary>
+        /// Returns the full POI data set.
+        /// </summary>
+        /// <param name="poiID">Point of Interest ID</param>
+        /// <returns></returns>
+        public POI GetPOI(int poiID)
+        {
+            var request = new RestRequest { Resource = "pois/{poi-id}" };
+            request.AddParameter("poi-id", poiID, ParameterType.UrlSegment);
+            return Execute<POI>(request);
+        }
+
+        public POICollection GetPOIList(double north, double south, double east, double west)
         {
             var request = new RestRequest { Resource = "bounding_boxes/{north},{south},{east},{west}/pois" };
             request.AddParameter("north", north, ParameterType.UrlSegment);
@@ -19,24 +31,46 @@ namespace LonelySharp
             return Execute<POICollection>(request);
         }
 
-        /// <summary>
-        /// Returns the full POI data set.
-        /// </summary>
-        /// <param name="poiID">Point of Interest ID</param>
-        /// <returns></returns>
-        public POI GetPOIByID(int poiID)
+        public POICollection GetPOIList(double latitude, double longitude, int distance)
         {
-            var request = new RestRequest { Resource = "pois/{poi-id}" };
-            request.AddParameter("poi-id", poiID, ParameterType.UrlSegment);
-            return Execute<POI>(request);
+            return GetPOIList(latitude, longitude, distance, DistanceType.Kilometers);
         }
 
-        public POICollection GetPOIListByPlace(Place place)
+        public POICollection GetPOIList(double latitude, double longitude, int distance, DistanceType measurementType)
         {
-            return GetPOIListByPlace(place, null);
+            double calculatedDistance;
+
+            switch (measurementType)
+            {
+                case DistanceType.Meters:
+                    calculatedDistance = Convert.ToDouble((double)distance / (double)1000);
+                    break;
+                case DistanceType.Miles:
+                    calculatedDistance = distance / 0.621371192;
+                    break;
+                default:
+                    calculatedDistance = distance;
+                    break;
+            }
+
+            GeoLocation myLocation = GeoLocation.FromDegrees(latitude, longitude);
+
+            GeoLocation[] coordinates = myLocation.BoundingCoordinates(calculatedDistance);
+
+            double north = coordinates[1].getLatitudeInDegrees();
+            double south = coordinates[0].getLatitudeInDegrees();
+            double east = coordinates[1].getLongitudeInDegrees();
+            double west = coordinates[0].getLongitudeInDegrees();
+
+            return GetPOIList(north, south, east, west);
         }
 
-        public POICollection GetPOIListByPlace(Place place, POIType? poiType)
+        public POICollection GetPOIList(Place place)
+        {
+            return GetPOIList(place, null);
+        }
+
+        public POICollection GetPOIList(Place place, POIType? poiType)
         {
             var request = new RestRequest { Resource = "bounding_boxes/{north},{south},{east},{west}/pois" };
             request.AddParameter("north", place.Northlatitude, ParameterType.UrlSegment);
@@ -50,12 +84,12 @@ namespace LonelySharp
             return Execute<POICollection>(request);
         }
 
-        public POICollection GetPOIListByPlaceID(int placeID)
+        public POICollection GetPOIList(int placeID)
         {
-            return GetPOIListByPlaceID(placeID, null);
+            return GetPOIList(placeID, null);
         }
 
-        public POICollection GetPOIListByPlaceID(int placeID, POIType? poiType)
+        public POICollection GetPOIList(int placeID, POIType? poiType)
         {
             var request = new RestRequest { Resource = "places/{placeID}/pois" };
             request.AddParameter("placeID", placeID, ParameterType.UrlSegment);
@@ -75,6 +109,13 @@ namespace LonelySharp
             Shop,
             Night,
             Do
+        }
+
+        public enum DistanceType
+        {
+            Kilometers,
+            Meters,
+            Miles
         }
     }
 }

@@ -8,5 +8,5 @@ Sample Usage:
 
 using LonelySharp;
 var lonelySharp = new LonelySharp("accountSid", "secretKey");
-var places = lonelySharp.FindPlace("Brisbane");
-var pointsOfInterest = lonelySharp.GetPOIListByPlace(places.First());
+var places = lonelySharp.GetPlace("Brisbane");
+var pointsOfInterest = lonelySharp.GetPOIList(places.First());

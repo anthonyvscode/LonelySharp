@@ -17,8 +17,6 @@ namespace LonelySharp.Model
         public double? Latitude { get; set; }
         [DeserializeAs(Name = "digital-longitude")]
         public double? Longitude { get; set; }
-        //[DeserializeAs(Name = "poi-type")]
-        //public string POIType { get; set; }
 
         [DeserializeAs(Name = "alt-name")]
         public string AltName { get; set; }

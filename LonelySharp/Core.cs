@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
+using LonelySharp.Model;
 using RestSharp;
 using RestSharp.Deserializers;
 
@@ -12,8 +14,8 @@ namespace LonelySharp
         private const string BaseUrl = "http://apigateway.lonelyplanet.com/api";
         private RestClient _client;
 
-        private readonly string _oAuthKey;
-        private readonly string _oAuthSecret;
+        private static string _oAuthKey;
+        private static string _oAuthSecret;
 
         /// <summary>
         /// The number of requests that have been made by the current Client instance
@@ -47,7 +49,14 @@ namespace LonelySharp
 			var response = _client.Execute<T>(request);
             RequestCount++;
             DataCount += response.RawBytes.Length;
-			return response.Data;
+            
+            //Nice of them to return a plan-text string instead of XML on error....
+            if (response.Content.StartsWith("Your request matches too many"))
+            {
+                throw new TooManyResultsException(response.Content);
+            }
+			    
+            return response.Data;
 		}
 
 		public RestResponse Execute(RestRequest request)

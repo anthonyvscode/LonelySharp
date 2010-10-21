@@ -15,7 +15,7 @@ namespace LonelySharp
      * 
      * @author Jan Philip Matuschek
      * @version 22 September 2010
-     * @Converted to C# by Anthony Zigenbine on 19th October 2010
+     * @converted to C# by Anthony Zigenbine on 19th October 2010
      */
     public class GeoLocation
     {

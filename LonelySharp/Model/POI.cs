@@ -6,18 +6,21 @@ using RestSharp.Deserializers;
 
 namespace LonelySharp.Model
 {
-
-    public class POI : LonelySharpBase
+    [DeserializeAs(Name = "POI")]
+    public class POI_Mini : LonelySharpBase
     {
-        [DeserializeAs(Name = "id")]
-        public int ID { get; set; }
         [DeserializeAs(Name = "name")]
         public string Name { get; set; }
         [DeserializeAs(Name = "digital-latitude")]
         public double? Latitude { get; set; }
         [DeserializeAs(Name = "digital-longitude")]
         public double? Longitude { get; set; }
+        [DeserializeAs(Name = "poi-type")]
+        public LonelySharp.POIType POIType { get; set; }
+    }
 
+    public class POI : POI_Mini
+    {
         [DeserializeAs(Name = "alt-name")]
         public string AltName { get; set; }
 
@@ -33,9 +36,6 @@ namespace LonelySharp.Model
         [DeserializeAs(Name = "urls")]
         public List<Url> Urls { get; set; }
 
-        [DeserializeAs(Name = "poi-type")]
-        public LonelySharp.POIType POIType { get; set; }
-
         [DeserializeAs(Name = "address")]
         public Address Address { get; set; }
         [DeserializeAs(Name = "review")]
@@ -49,25 +49,9 @@ namespace LonelySharp.Model
 
         [DeserializeAs(Name = "representations")]
         public List<Representation> Representations { get; set; }
-        
-   //<telephones>
-   //  <telephone>
-   //    <area-code/>
-   //    <number>77288</number>
-   //    <text>tel, info</text>
-   //  </telephone>
-   //</telephones>
-   //<transports>
-   //</transports>
-   //<representations>
-   //  <representation type="msite" href="http://m.lonelyplanet.com/et-1000587244"/>
-   //  <representation type="msite.touch" href="http://touch.lonelyplanet.com/et-1000587244"/>
-   //  <representation type="lp.com" href="http://www.lonelyplanet.com/poiRedirector?poiId=363499"/>
-   //</representations>
-
     }
 
-    public class POICollection : List<POI>
+    public class POICollection : List<POI_Mini>
     {
     }
 

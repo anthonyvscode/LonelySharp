@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Core.cs" />
     <Compile Include="GeoLocation.cs" />
+    <Compile Include="Model\TooManyResultsException.cs" />
     <Compile Include="Utilities\Helpers.cs" />
     <Compile Include="Model\POI.cs" />
     <Compile Include="Model\LonelySharpBase.cs" />

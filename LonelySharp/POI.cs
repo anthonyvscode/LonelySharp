@@ -18,7 +18,18 @@ namespace LonelySharp
         {
             var request = new RestRequest { Resource = "pois/{poi-id}" };
             request.AddParameter("poi-id", poiID, ParameterType.UrlSegment);
-            return Execute<POI>(request);
+            var PointOfInterest = Execute<POI>(request);
+
+            //POI Details Request is the only request that doesnt return the ID. Setting it manually.
+            if (PointOfInterest != null)
+                PointOfInterest.ID = poiID;
+
+            return PointOfInterest;
+        }
+
+        public POICollection GetPOIList(double latitude, double longitude, int distance)
+        {
+            return GetPOIList(latitude, longitude, distance, DistanceType.Kilometers);
         }
 
         public POICollection GetPOIList(double north, double south, double east, double west)
@@ -31,19 +42,15 @@ namespace LonelySharp
             return Execute<POICollection>(request);
         }
 
-        public POICollection GetPOIList(double latitude, double longitude, int distance)
-        {
-            return GetPOIList(latitude, longitude, distance, DistanceType.Kilometers);
-        }
-
-        public POICollection GetPOIList(double latitude, double longitude, int distance, DistanceType measurementType)
+        public POICollection GetPOIList(double latitude, double longitude, int distance, DistanceType distanceType)
         {
             double calculatedDistance;
 
-            switch (measurementType)
+            //convert it back to kilometers
+            switch (distanceType)
             {
                 case DistanceType.Meters:
-                    calculatedDistance = Convert.ToDouble((double)distance / (double)1000);
+                    calculatedDistance = Convert.ToDouble((double)distance / 1000);
                     break;
                 case DistanceType.Miles:
                     calculatedDistance = distance / 0.621371192;
@@ -93,7 +100,6 @@ namespace LonelySharp
         {
             var request = new RestRequest { Resource = "places/{placeID}/pois" };
             request.AddParameter("placeID", placeID, ParameterType.UrlSegment);
-            request.AddParameter("type-name", poiType, ParameterType.UrlSegment);
 
             if (poiType != null)
                 request.AddParameter("poi_type", poiType);

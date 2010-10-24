@@ -77,7 +77,7 @@ namespace LonelySharp
             return GetPOIList(place, null);
         }
 
-        public POICollection GetPOIList(Place place, POIType? poiType)
+        public virtual POICollection GetPOIList(Place place, POIType? poiType)
         {
             var request = new RestRequest { Resource = "bounding_boxes/{north},{south},{east},{west}/pois" };
             request.AddParameter("north", place.Northlatitude, ParameterType.UrlSegment);
@@ -91,7 +91,7 @@ namespace LonelySharp
             return Execute<POICollection>(request);
         }
 
-        public POICollection GetPOIList(int placeID)
+        public virtual POICollection GetPOIList(int placeID)
         {
             return GetPOIList(placeID, null);
         }

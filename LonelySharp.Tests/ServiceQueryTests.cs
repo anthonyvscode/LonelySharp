@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using LonelySharp.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 
 namespace LonelySharp.Tests
 {
@@ -28,16 +29,9 @@ namespace LonelySharp.Tests
         public void Can_Throw_Custom_Error_Exception()
         {
             var lsharp = new LonelySharp();
+            var mock = new Mock<LonelySharp>();
 
-            //POI ID for USA (returns too many results)
-            try
-            {
-                var thisWillEror = lsharp.GetPOIList(361720);
-            }
-            catch (TooManyResultsException)
-            {
-                Assert.IsTrue(true);
-            }
+            mock.Setup(foo => foo.GetPOIList(361720)).Throws<TooManyResultsException>();
         }
     }
 }

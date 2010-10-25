@@ -28,7 +28,6 @@ namespace LonelySharp.Tests
         [TestMethod]
         public void Can_Throw_Custom_Error_Exception()
         {
-            var lsharp = new LonelySharp();
             var mock = new Mock<LonelySharp>();
 
             mock.Setup(foo => foo.GetPOIList(361720)).Throws<TooManyResultsException>();
